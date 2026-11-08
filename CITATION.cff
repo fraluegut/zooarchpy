@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "ZooArchPy"
+type: software
+version: 0.1.0.dev0
+license: MIT
+authors:
+  - family-names: Luengo Gutiérrez
+    given-names: Francisco Javier
+    email: javierluengogutierrez@gmail.com
+abstract: "Verifiable quantitative zooarchaeology for Python."
+keywords: [zooarchaeology, archaeozoology, NISP, MNI]
