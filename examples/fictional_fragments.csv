@@ -1,0 +1,12 @@
+specimen_id,site,context,taxon,taxon_rank,element,side,count,diagnostic_zones,refit_group
+H001,FICTIONAL-SITE,CTX-201,Bos taurus,species,humerus,left,1,PE;PS,
+H002,FICTIONAL-SITE,CTX-201,Bos taurus,species,humerus,left,1,DS;DE,
+H003,FICTIONAL-SITE,CTX-201,Bos taurus,species,humerus,left,1,MS,
+H004,FICTIONAL-SITE,CTX-201,Bos taurus,species,humerus,left,1,PS;MS,
+H005,FICTIONAL-SITE,CTX-201,Bos taurus,species,humerus,left,1,DE,
+H006,FICTIONAL-SITE,CTX-201,Bos taurus,species,humerus,right,1,DE,
+H007,FICTIONAL-SITE,CTX-201,Ovis/Capra,genus,humerus,left,1,PE,
+H008,FICTIONAL-SITE,CTX-201,Bos taurus,species,humerus,left,1,PS,R1
+H009,FICTIONAL-SITE,CTX-201,Bos taurus,species,humerus,left,1,PS,R1
+H010,FICTIONAL-SITE,CTX-201,Bos taurus,species,humerus,left,1,,
+H011,FICTIONAL-SITE,CTX-201,Mammalia,class,long bone shaft,,4,,
