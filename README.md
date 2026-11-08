@@ -4,29 +4,70 @@ Verifiable quantitative zooarchaeology for Python. The aim is a library whose re
 be cited in a methods section: explicit policies, no silent assumptions, every result
 carrying the method and warnings that produced it.
 
-**Status: pre-alpha, Phase 1 (MVP).** Implemented: `Specimen` model, `Assemblage`, CSV
-import, structured validation, NR/NSP, NISP (+ percentages, grouping by site / context /
-phase / taxon / element...), CSV and JSON export. MNE, MNI, MAU, mortality, taphonomy,
-biometry and diversity are planned (see [docs/roadmap.md](docs/roadmap.md)).
+> **Status: pre-alpha.** Only NR/NSP and NISP are implemented. The API will change.
+> Not yet published on PyPI.
+
+## What works today and what is planned
+
+| Area | Status |
+|---|---|
+| `Specimen` / `Assemblage`, CSV import, structured validation | implemented |
+| NR/NSP and NISP (grouping, percentages, ambiguity policies, CSV/JSON export) | implemented |
+| MNE and MNI from **fragments** (zone-based, conservative) | planned, Phase 2 |
+| MAU / %MAU with researcher-supplied reference tables | planned, Phase 2 |
+| Mortality, taphonomy, biometry, diversity | planned, Phase 3 |
+| Plots (skeleton diagrams painted by zone or by element) | planned, Phase 4 |
+
+Details in [docs/roadmap.md](docs/roadmap.md) and [docs/design.md](docs/design.md).
+
+### Why another tool
+
+Zooarchaeological quantification is usually done in spreadsheets, closed databases or GIS
+add-ons, and the choices that change a result (what counts as one specimen, how ambiguous
+identifications are treated, how fragments are matched) are rarely written down. ZooArchPy
+makes those choices explicit parameters and records them in every result. It does not invent
+methodology: each method cites its primary source, and anything not yet read from the source
+is not implemented (see [docs/references.md](docs/references.md)).
 
 ## Install (from a clone)
 
 ```bash
-pip install -e ".[dev]"
-pytest
+git clone <repository-url> && cd zooarchpy
+uv venv --python 3.11 && uv pip install -e ".[dev]"    # or: python -m venv .venv && pip install -e ".[dev]"
+pytest && ruff check . && mypy
 ```
 
 Requires Python ≥ 3.11. The core has **no runtime dependencies**.
 
 ## Example
 
+Using the fictional file [examples/fictional_fauna.csv](examples/fictional_fauna.csv):
+
 ```python
 from zooarchpy import Assemblage
 
 fauna = Assemblage.from_csv("examples/fictional_fauna.csv")   # fictional data
 print(fauna.validate())                                       # errors and warnings
+print(fauna.nisp(group_by="taxon"))
+```
+
+```text
+WARNING ambiguous_taxon: 'Ovis/Capra' is an ambiguous identification (1 rows); it is kept as its own category and never merged automatically
+taxon           nisp
+Bos taurus      4
+Capra hircus    1
+Mammalia        6
+Ovis aries      3
+Ovis/Capra      3
+Sus domesticus  1
+warning: ambiguous categories kept separate, not merged into other taxa: ['Ovis/Capra']
+```
+
+Other calls:
+
+```python
+print(fauna.nsp())                                            # identified 18, unidentified 12, total 30
 result = fauna.nisp(group_by=["context", "taxon"], percent=["context"])
-print(result)
 result.to_csv("nisp.csv")      # table only
 result.to_json("nisp.json")    # table + method, parameters, exclusions, warnings
 ```
