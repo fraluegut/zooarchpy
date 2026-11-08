@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  zooarchpy - SCHEMATIC generic ungulate skeleton, left lateral view.
+
+  This is a drawing TEMPLATE for painting data by element (Phase 4 plots). It is a deliberately
+  simplified silhouette: it is NOT anatomically accurate, NOT specific to any species, and it does
+  NOT define zones, landmarks or any published recording scheme. Zones are always supplied by the
+  researcher (see the zone scheme table in the README).
+
+  Contract:
+    * every paintable bone is a <g class="bone" id="el-ELEMENT" data-element="ELEMENT";
+    * ELEMENT is a lowercase label (the same labels used in the specimen table);
+    * paired elements (scapula, humerus, ..., phalanx) are drawn once, on the left side;
+      choosing a side is the job of the code that paints the template, not of this file;
+    * colour is controlled by CSS only: override the bone-fill CSS variable or the fill of
+      #el-ELEMENT from outside (inline SVG); no colours are hard-coded on the shapes.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 520" width="820" height="520"
+     role="img" aria-labelledby="title desc">
+  <title id="title">Schematic generic ungulate skeleton, left lateral view</title>
+  <desc id="desc">Simplified drawing of the main skeletal elements of a generic ungulate,
+    standing and facing left. Not anatomically accurate and not species-specific.</desc>
+  <style>
+    :root { --bone-fill: #e9e4d8; --bone-stroke: #5b5346; }
+    .bone path, .bone ellipse, .bone rect { fill: var(--bone-fill); stroke: var(--bone-stroke);
+      stroke-width: 1.5; stroke-linejoin: round; }
+    .ground { stroke: var(--bone-stroke); stroke-width: 1; stroke-dasharray: 6 6; opacity: 0.4; }
+  </style>
+
+  <line class="ground" x1="20" y1="502" x2="800" y2="502"/>
+
+  <!-- Head -->
+  <g class="bone" id="el-skull" data-element="skull">
+    <path d="M40,205 L62,172 L150,128 L176,138 L182,190 L150,214 L92,224 Z"/>
+  </g>
+  <g class="bone" id="el-mandible" data-element="mandible">
+    <path d="M84,230 L150,222 L172,206 L166,244 L96,246 Z"/>
+  </g>
+
+  <!-- Vertebral column -->
+  <g class="bone" id="el-atlas" data-element="atlas">
+    <path d="M178,142 L200,140 L202,166 L180,168 Z"/>
+  </g>
+  <g class="bone" id="el-axis" data-element="axis">
+    <path d="M204,140 L232,138 L234,166 L206,168 Z"/>
+  </g>
+  <g class="bone" id="el-cervical_vertebra" data-element="cervical_vertebra">
+    <path d="M236,138 L300,134 L302,164 L238,166 Z"/>
+  </g>
+  <g class="bone" id="el-thoracic_vertebra" data-element="thoracic_vertebra">
+    <path d="M304,134 L318,112 L330,134 L346,108 L358,134 L374,106 L386,134 L402,106 L414,134
+             L430,108 L442,134 L458,110 L470,134 L486,112 L498,134 L520,138 L520,160 L304,162 Z"/>
+  </g>
+  <g class="bone" id="el-lumbar_vertebra" data-element="lumbar_vertebra">
+    <path d="M524,138 L664,142 L664,168 L524,162 Z"/>
+  </g>
+  <g class="bone" id="el-sacrum" data-element="sacrum">
+    <path d="M668,142 L728,150 L732,186 L668,172 Z"/>
+  </g>
+  <g class="bone" id="el-caudal_vertebra" data-element="caudal_vertebra">
+    <path d="M734,152 Q790,160 800,210 L788,214 Q778,176 732,172 Z"/>
+  </g>
+
+  <!-- Thorax: ribs are drawn as filled crescents, one copy per rib -->
+  <g class="bone" id="el-rib" data-element="rib">
+    <path d="M314,160 Q292,248 392,290 L394,280 Q318,246 328,160 Z"/>
+    <path d="M344,160 Q322,252 418,292 L420,282 Q348,250 358,160 Z"/>
+    <path d="M374,160 Q352,254 444,294 L446,284 Q378,252 388,160 Z"/>
+    <path d="M404,160 Q384,254 468,294 L470,284 Q408,252 418,160 Z"/>
+    <path d="M434,160 Q416,252 492,292 L494,282 Q438,250 448,160 Z"/>
+    <path d="M464,160 Q448,246 516,286 L518,276 Q468,244 478,160 Z"/>
+    <path d="M494,160 Q480,236 536,274 L538,264 Q498,234 508,160 Z"/>
+  </g>
+  <g class="bone" id="el-sternum" data-element="sternum">
+    <rect x="388" y="288" width="150" height="12" rx="6"/>
+  </g>
+
+  <!-- Forelimb -->
+  <g class="bone" id="el-scapula" data-element="scapula">
+    <path d="M280,148 L338,152 L326,222 L300,228 Z"/>
+  </g>
+  <g class="bone" id="el-humerus" data-element="humerus">
+    <path d="M298,222 L330,216 L362,288 L336,300 Z"/>
+  </g>
+  <g class="bone" id="el-ulna" data-element="ulna">
+    <path d="M362,276 L380,282 L374,346 L362,346 Z"/>
+  </g>
+  <g class="bone" id="el-radius" data-element="radius">
+    <path d="M338,294 L364,296 L360,386 L342,386 Z"/>
+  </g>
+  <g class="bone" id="el-carpal" data-element="carpal">
+    <rect x="338" y="388" width="14" height="16" rx="3"/>
+    <rect x="352" y="388" width="14" height="16" rx="3"/>
+  </g>
+  <g class="bone" id="el-metacarpal" data-element="metacarpal">
+    <path d="M342,406 L362,406 L359,470 L346,470 Z"/>
+  </g>
+  <g class="bone" id="el-phalanx" data-element="phalanx">
+    <path d="M340,472 L362,472 L370,500 L336,500 Z"/>
+  </g>
+
+  <!-- Pelvis and hindlimb -->
+  <g class="bone" id="el-pelvis" data-element="pelvis">
+    <path d="M660,148 L726,152 L750,214 L728,226 L704,232 L676,206 Z"/>
+  </g>
+  <g class="bone" id="el-femur" data-element="femur">
+    <path d="M690,216 L718,224 L672,322 L646,312 Z"/>
+  </g>
+  <g class="bone" id="el-patella" data-element="patella">
+    <ellipse cx="640" cy="322" rx="9" ry="12"/>
+  </g>
+  <g class="bone" id="el-tibia" data-element="tibia">
+    <path d="M650,328 L676,324 L724,396 L706,404 Z"/>
+  </g>
+  <g class="bone" id="el-calcaneus" data-element="calcaneus">
+    <path d="M718,376 L738,372 L734,418 L716,414 Z"/>
+  </g>
+  <g class="bone" id="el-astragalus" data-element="astragalus">
+    <ellipse cx="702" cy="410" rx="11" ry="9"/>
+  </g>
+  <g class="bone" id="el-tarsal" data-element="tarsal">
+    <rect x="696" y="420" width="22" height="12" rx="3"/>
+  </g>
+  <g class="bone" id="el-metatarsal" data-element="metatarsal">
+    <path d="M700,434 L722,434 L724,480 L704,480 Z"/>
+  </g>
+  <g class="bone" id="el-phalanx_hind" data-element="phalanx">
+    <path d="M702,482 L726,482 L734,500 L698,500 Z"/>
+  </g>
+</svg>
