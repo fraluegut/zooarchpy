@@ -7,6 +7,7 @@ from pathlib import Path
 
 from zooarchpy.io import read_specimens
 from zooarchpy.models import Specimen, TaxonomyPolicy, Vocabulary
+from zooarchpy.quantification import mne as _mne
 from zooarchpy.quantification import mni as _mni
 from zooarchpy.quantification import nisp as _nisp
 from zooarchpy.quantification import nsp as _nsp
@@ -101,6 +102,29 @@ class Assemblage:
             taxon_map=taxon_map,
             include_unidentified=include_unidentified,
             percent=percent,
+            allow_errors=allow_errors,
+        )
+
+    def mne(
+        self,
+        *,
+        aggregate_by: str | Sequence[str] | None,
+        zone_scheme: str,
+        counts_are_elements: bool,
+        method: str = "zones",
+        ambiguous: str = "separate",
+        taxon_map: Mapping[str, str] | None = None,
+        allow_errors: bool = False,
+    ) -> AnalysisResult:
+        """Zone-based MNE. See :func:`zooarchpy.quantification.mne.mne`."""
+        return _mne(
+            self,
+            aggregate_by=aggregate_by,
+            zone_scheme=zone_scheme,
+            counts_are_elements=counts_are_elements,
+            method=method,  # type: ignore[arg-type]
+            ambiguous=ambiguous,  # type: ignore[arg-type]
+            taxon_map=taxon_map,
             allow_errors=allow_errors,
         )
 
