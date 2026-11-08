@@ -7,6 +7,7 @@ from pathlib import Path
 
 from zooarchpy.io import read_specimens
 from zooarchpy.models import Specimen, TaxonomyPolicy, Vocabulary
+from zooarchpy.quantification import mni as _mni
 from zooarchpy.quantification import nisp as _nisp
 from zooarchpy.quantification import nsp as _nsp
 from zooarchpy.reporting import AnalysisResult
@@ -100,6 +101,25 @@ class Assemblage:
             taxon_map=taxon_map,
             include_unidentified=include_unidentified,
             percent=percent,
+            allow_errors=allow_errors,
+        )
+
+    def mni(
+        self,
+        *,
+        aggregate_by: str | Sequence[str] | None,
+        counts_are_elements: bool,
+        ambiguous: str = "separate",
+        taxon_map: Mapping[str, str] | None = None,
+        allow_errors: bool = False,
+    ) -> AnalysisResult:
+        """Conservative sided-element MNI. See :func:`zooarchpy.quantification.mni.mni`."""
+        return _mni(
+            self,
+            aggregate_by=aggregate_by,
+            counts_are_elements=counts_are_elements,
+            ambiguous=ambiguous,  # type: ignore[arg-type]
+            taxon_map=taxon_map,
             allow_errors=allow_errors,
         )
 

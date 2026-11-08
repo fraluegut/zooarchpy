@@ -6,8 +6,8 @@ carrying the method and warnings that produced it.
 
 **Status: pre-alpha, Phase 1 (MVP).** Implemented: `Specimen` model, `Assemblage`, CSV
 import, structured validation, NR/NSP, NISP (+ percentages, grouping by site / context /
-phase / taxon / element...), CSV and JSON export. MNE, MNI, MAU, mortality, taphonomy,
-biometry and diversity are planned (see [docs/roadmap.md](docs/roadmap.md)).
+phase / taxon / element...), conservative sided-element MNI, CSV and JSON export. MNE,
+MAU, mortality, taphonomy, biometry and diversity are planned (see [docs/roadmap.md](docs/roadmap.md)).
 
 ## Install (from a clone)
 
@@ -40,10 +40,12 @@ Principles visible in the API:
   an explicit `taxon_map`.
 - Data with validation errors are rejected unless you pass `allow_errors=True`.
 - NISP is reported as a count of specimens, never as a number of animals.
+- MNI refuses to run until you declare the aggregation unit and that each count is a
+  distinct element, because it changes with both.
 
 ## Documentation
 
-[docs/design.md](docs/design.md) · [docs/nisp.md](docs/nisp.md) ·
+[docs/design.md](docs/design.md) · [docs/nisp.md](docs/nisp.md) · [docs/mni.md](docs/mni.md) ·
 [docs/roadmap.md](docs/roadmap.md) · [docs/references.md](docs/references.md) ·
 [CONTRIBUTING.md](CONTRIBUTING.md)
 
