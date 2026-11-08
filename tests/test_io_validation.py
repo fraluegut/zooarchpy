@@ -1,6 +1,6 @@
 import pytest
-from conftest import spec
 
+from conftest import spec
 from zooarchpy import Assemblage, DataFormatError, Observation, Side, Specimen, Vocabulary
 
 
