@@ -1,8 +1,8 @@
 import json
 
 import pytest
-from conftest import spec
 
+from conftest import spec
 from zooarchpy import Assemblage, DataQualityError, TaxonomyPolicy
 
 
